@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+    nodejs-app:
+        build:
+          context: ./nodedocker_app
+        container_name: nodejsserver
+        hostname: nodejsserver
+        ports:
+            - "8888:8888" 
+    nodejs-data:
+        build:
+          context: ./data
+        container_name: dataServer
+        hostname: dataServer
+        ports:
+            - "8889:8889"             
+    nginx:
+        build:
+          context: ./nginx
+        container_name: nginx
+        hostname: nginx
+        ports:
+            - "84:80" 
+        depends_on:
+            - nodejs-app
