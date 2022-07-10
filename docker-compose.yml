@@ -24,3 +24,4 @@ services:
             - "84:80" 
         depends_on:
             - nodejs-app
+            - nodejs-data
